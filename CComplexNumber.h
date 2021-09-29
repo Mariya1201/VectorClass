@@ -1,33 +1,32 @@
 #pragma once
-#ifndef CCOMPLEXVECTOR_H
-#define CCOMPLEXVECTOR_H
+#ifndef CCOMPLEXNUMBER_H
+#define CCOMPLEXNUMBER_H
 
 
-class CComplexVector {
+class CComplexNumber {
 public:
-    CComplexNumber arr[N];
-    CComplexVector(CComplexNumber* numbers) { // Конструктор
-        for (int i = 0; i < N; i++) {
-            arr[i] = numbers[i];
-        }
+    double Re;
+    double Im;
+
+public:
+    CComplexNumber(double r = 0, double i = 0) { // Конструктор
+        Re = r;
+        Im = i;
     }
-    CComplexVector(const CComplexVector& c)   // конструктор копирования
+    CComplexNumber(const CComplexNumber& c)   // конструктор копирования
     {
-        for (int i = 0; i < N; i++) {
-            arr[i] = c.arr[i];
-        }
+        Re = c.Re;
+        Im = c.Im;
     }
-    ~CComplexVector() {} 
-    //double getX();
-    //double getY();
+    ~CComplexNumber() {} 
+    CComplexNumber operator+(const CComplexNumber&); // Сложение комплексных чисел
+    CComplexNumber operator-(const CComplexNumber&); // Вычитание комплексных чисел
 
-    CComplexVector operator+(const CComplexVector&);
-    CComplexVector operator-(const CComplexVector&);
+    CComplexNumber operator*(const CComplexNumber&); // Умножение комплексных чисел
+    CComplexNumber operator/(const CComplexNumber&); // Деление комплексных чисел
 
-    CComplexVector operator*(const CComplexVector&);
-
-    friend ostream& operator<<(ostream&, const CComplexVector&);
-    friend istream& operator>>(istream&, CComplexVector&);
+    friend ostream& operator<<(ostream&, const CComplexNumber&); // Вывод комплексных чисел
+    friend istream& operator>>(istream&, CComplexNumber&); // Ввод комплексных чисел
 };
 
 #endif

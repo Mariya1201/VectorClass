@@ -11,7 +11,13 @@ public:
             arr[i] = numbers[i];
         }
     }
-
+    CComplexVector(const CComplexVector& c)   // конструктор копирования
+    {
+        for (int i = 0; i < N; i++) {
+            arr[i] = c.arr[i];
+        }
+    }
+    ~CComplexVector() {} 
     //double getX();
     //double getY();
 
